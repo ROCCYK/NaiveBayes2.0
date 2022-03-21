@@ -42,9 +42,15 @@ def predict(data, X, X_label, Y, Y_label):
 def bayes4(data, X, X_label, Y, Y_label, X2, X_label2, X3, X_label3, X4, X_label4):
     Y_dict = prior(data, Y)
     X_dict = prior(data, X)
+    X_dict2 = prior(data, X2)
+    X_dict3 = prior(data, X3)
+    X_dict4 = prior(data, X4)
     p_of_y = Y_dict[Y_label]
     p_of_x = X_dict[X_label]
-    return (likelyhood(data, X, X_label, Y, Y_label) * likelyhood(data, X2, X_label2, Y, Y_label) * likelyhood(data, X3, X_label3, Y, Y_label) * likelyhood(data, X4, X_label4, Y, Y_label) * p_of_y)/p_of_x
+    p_of_x2 = X_dict2[X_label2]
+    p_of_x3 = X_dict3[X_label3]
+    p_of_x4 = X_dict4[X_label4]
+    return (likelyhood(data, X, X_label, Y, Y_label) * likelyhood(data, X2, X_label2, Y, Y_label) * likelyhood(data, X3, X_label3, Y, Y_label) * likelyhood(data, X4, X_label4, Y, Y_label) * p_of_y)/(p_of_x * p_of_x2 * p_of_x3 * p_of_x4)
 
 def predict4(data, X, X_label, Y, Y_label, X2, X_label2, X3, X_label3, X4, X_label4):
     dic = {}

@@ -25,10 +25,11 @@ def bayes(data, X, X_label, Y, Y_label):
 
 def predict(data, X, X_label, Y, Y_label):
     dic = {}
-    if Y_label == 'Yes':
-        opposite = 'No'
-    if Y_label == 'No':
-        opposite = 'Yes'
+    choices = sorted(data[Y].unique())
+    if Y_label == choices[0]:
+        opposite = choices[1]
+    if Y_label == choices[1]:
+        opposite = choices[0]
     bayest = bayes(data, X, X_label, Y, Y_label)
     dic[Y_label] = bayest
     dic[opposite] = 1 - bayest
@@ -54,10 +55,11 @@ def bayes4(data, X, X_label, Y, Y_label, X2, X_label2, X3, X_label3, X4, X_label
 
 def predict4(data, X, X_label, Y, Y_label, X2, X_label2, X3, X_label3, X4, X_label4):
     dic = {}
-    if Y_label == 'Yes':
-        opposite = 'No'
-    if Y_label == 'No':
-        opposite = 'Yes'
+    choices = sorted(data[Y].unique())
+    if Y_label == choices[0]:
+        opposite = choices[1]
+    if Y_label == choices[1]:
+        opposite = choices[0]
     bayest = bayes4(data, X, X_label, Y, Y_label, X2, X_label2, X3, X_label3, X4, X_label4)
     dic[Y_label] = bayest
     dic[opposite] = 1-bayest
